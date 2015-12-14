@@ -11,7 +11,18 @@ app.get('/scrape', function(req, res){
     var options = {
 	  url: url,
 	  headers: {
-	    Cookie: 'bcookie="v=2&3c90d372-5cb4-4490-8667-fa8d3df5d3e3"; __utma=226841088.1249257432.1445772302.1448833050.1449133419.5; __utmz=226841088.1448833050.4.2.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided); __utmv=226841088.guest; visit="v=1&G"; bscookie="v=1&201511101058389e3bf5e5-5051-438c-892f-1b5cbc3df1dbAQGaxJ5HiC14JxTrRA67R0-il_YeDjD4"; _ga=GA1.2.1249257432.1445772302; lang="v=2&lang=en-us"; lidc="b=TB98:g=153:u=1:i=1450090418:t=1450176818:s=AQFSU6zA88wb33lm4u8sT9S-ywMU3EJV"; leo_auth_token="GST:9Iooe2VyK5YpL9TX3vxkjEGCoFY19K8SX6NkGYyYKSv5AzTXLZngPh:1450096754:fa06601e3f9e7c7dc46f444cc7d5e2545ee0efa7"; JSESSIONID="ajax:6642126039141240966"; L1e=70eb6; L1c=506114f5; RT=s=1450096754692&r=https%3A%2F%2Fus.linkedin.com%2Fin%2Fmohammed-lazhari-70069539'
+	  	"Host": 'us.linkedin.com',
+		"User-Agent": 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0',
+		"Accept": 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+		"Accept-Language": 'en-US,en;q=0.5',
+		"Accept-Encoding": 'gzip, deflate',
+		"Content-Type": 'application/json; charset=UTF-8',
+		"Referer": 'https://us.linkedin.com/in/mohammed-lazhari-70069539',
+		"Content-Length": 636,
+		"Connection": 'keep-alive',
+		"Pragma": 'no-cache',
+		"Cache-Control": 'no-cache',
+	    "Cookie": 'bcookie="v=2&3c90d372-5cb4-4490-8667-fa8d3df5d3e3"; __utma=226841088.1249257432.1445772302.1448833050.1449133419.5; __utmz=226841088.1448833050.4.2.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided); __utmv=226841088.guest; visit="v=1&G"; bscookie="v=1&201511101058389e3bf5e5-5051-438c-892f-1b5cbc3df1dbAQGaxJ5HiC14JxTrRA67R0-il_YeDjD4"; _ga=GA1.2.1249257432.1445772302; lang="v=2&lang=en-us"; lidc="b=TB98:g=153:u=1:i=1450090418:t=1450176818:s=AQFSU6zA88wb33lm4u8sT9S-ywMU3EJV"; leo_auth_token="GST:9Iooe2VyK5YpL9TX3vxkjEGCoFY19K8SX6NkGYyYKSv5AzTXLZngPh:1450096754:fa06601e3f9e7c7dc46f444cc7d5e2545ee0efa7"; JSESSIONID="ajax:6642126039141240966"; L1e=70eb6; L1c=506114f5; RT=s=1450096754692&r=https%3A%2F%2Fus.linkedin.com%2Fin%2Fmohammed-lazhari-70069539'
 	  }
 	};
     var profile = {
