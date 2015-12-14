@@ -4,7 +4,7 @@ var request = require('request');
 var cheerio = require('cheerio');
 var s = require("underscore.string");
 var app     = express();
-
+var httpProxy = require('http-proxy');
 app.get('/scrape', function(req, res){
     var personId = req.query.id;
     url = 'https://us.linkedin.com/in/'+personId;
@@ -161,3 +161,14 @@ app.get('/scrape', function(req, res){
     }) ;
 });
 app.listen(4040);
+
+httpProxy.createServer({
+  target: {
+    host: 'localhost',
+    port: 4040
+  },
+  ssl: {
+    key: fs.readFileSync('server-key.pem', 'utf8'),
+    cert: fs.readFileSync('server-cert.pem', 'utf8')
+  }
+}).listen(4141);
