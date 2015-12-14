@@ -10,10 +10,7 @@ app.get('/scrape', function(req, res){
     var personId = req.query.id;
     url = 'https://us.linkedin.com/in/'+personId;
     var options = {
-	  url: url,
-	  headers: {
-		"User-Agent": 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A'
-	  }
+	  	url: url
 	};
     var profile = {
         name:"",
@@ -152,7 +149,7 @@ app.get('/scrape', function(req, res){
 });
 app.listen(4040);
 
-/*httpProxy.createServer({
+httpProxy.createServer({
   target: {
     host: 'localhost',
     port: 4040
@@ -161,4 +158,4 @@ app.listen(4040);
     key: fs.readFileSync('server-key.pem', 'utf8'),
     cert: fs.readFileSync('server-cert.pem', 'utf8')
   }
-}).listen(443);*/
+}).listen(9050);
