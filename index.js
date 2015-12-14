@@ -5,17 +5,14 @@ var cheerio = require('cheerio');
 var s = require("underscore.string");
 var app     = express();
 var httpProxy = require('http-proxy');
-var Agent = require('socks5-http-client/lib/Agent');
 app.get('/scrape', function(req, res){
     var personId = req.query.id;
     url = 'https://us.linkedin.com/in/'+personId;
     var options = {
-	  	url: url,
-	  	agentClass: Agent,
-	    agentOptions: {
-	        socksHost: 'localhost', // Defaults to 'localhost'.
-	        socksPort: 9050 // Defaults to 1080.
-	    }
+	  url: url,
+	  headers: {
+		"User-Agent": 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A'
+	  }
 	};
     var profile = {
         name:"",
@@ -31,7 +28,7 @@ app.get('/scrape', function(req, res){
         projects: [],
         languages: []
     };
-    request(url, function(error, response, html){
+    request(options, function(error, response, html){
         if(!error){
             var $ = cheerio.load(html);
 
