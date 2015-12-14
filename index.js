@@ -5,6 +5,7 @@ var cheerio = require('cheerio');
 var s = require("underscore.string");
 var app     = express();
 var httpProxy = require('http-proxy');
+var Agent = require('socks5-http-client/lib/Agent');
 app.get('/scrape', function(req, res){
     var personId = req.query.id;
     url = 'https://us.linkedin.com/in/'+personId;
