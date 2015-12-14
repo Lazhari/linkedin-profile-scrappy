@@ -5,15 +5,17 @@ var cheerio = require('cheerio');
 var s = require("underscore.string");
 var app     = express();
 var httpProxy = require('http-proxy');
+var Agent = require('socks5-http-client/lib/Agent');
 app.get('/scrape', function(req, res){
     var personId = req.query.id;
     url = 'https://us.linkedin.com/in/'+personId;
     var options = {
-	  url: url,
-	  headers: {
-		"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
-	  },
-	  proxy: "72.240.34.12"
+	  	url: url,
+	  	agentClass: Agent,
+	    agentOptions: {
+	        socksHost: 'localhost', // Defaults to 'localhost'.
+	        socksPort: 9050 // Defaults to 1080.
+	    }
 	};
     var profile = {
         name:"",
