@@ -30,6 +30,7 @@ app.get('/scrape', function(req, res) {
         languages: []
     };
     request(options, function(error, response, html) {
+        console.log(response);
         if (!error) {
             var $ = cheerio.load(html);
 
@@ -131,6 +132,17 @@ app.get('/scrape', function(req, res) {
                     profile.languages.push(language);
                 });
             });
+
+            fs.writeFile('./profiles/' + req.query.id + '.json', JSON.stringify(profile, null, 4), function(err) {
+
+                console.log('File successfully written! - Check your project directory for the output.json file');
+
+            });
+
+            // Finally, we'll just send out a message to the browser reminding you that this app does not have a UI.
+            res.send(profile);
+        } else {
+            res.send(error);
         }
 
         // To write to the system we will use the built in 'fs' library.
@@ -139,14 +151,6 @@ app.get('/scrape', function(req, res) {
         // Parameter 2 :  JSON.stringify(json, null, 4) - the data to write, here we do an extra step by calling JSON.stringify to make our JSON easier to read
         // Parameter 3 :  callback function - a callback function to let us know the status of our function
 
-        fs.writeFile('./profiles/' + req.query.id + '.json', JSON.stringify(profile, null, 4), function(err) {
-
-            console.log('File successfully written! - Check your project directory for the output.json file');
-
-        });
-
-        // Finally, we'll just send out a message to the browser reminding you that this app does not have a UI.
-        res.send(profile);
 
     });
 });
