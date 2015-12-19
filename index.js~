@@ -9,7 +9,7 @@ var Agent = require('socks5-http-client/lib/Agent');
 
 req = request.defaults({
 	jar: true,                 // save cookies to jar
-	rejectUnauthorized: false,
+	rejectUnauthorized: false, 
 	followAllRedirects: true   // allow redirections
 });
 app.get('/scrape', function(req, res) {
@@ -19,8 +19,7 @@ app.get('/scrape', function(req, res) {
         url: url,
         headers: {
             'User-Agent': 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0'
-        },
-		//proxy:'http://111.11.27.194'
+        }
     };
     var profile = {
         name: "",
@@ -163,7 +162,7 @@ app.get('/scrape', function(req, res) {
 });
 app.listen(4040);
 
-/*httpProxy.createServer({
+httpProxy.createServer({
     target: {
         host: 'localhost',
         port: 4040
@@ -172,4 +171,4 @@ app.listen(4040);
         key: fs.readFileSync('server-key.pem', 'utf8'),
         cert: fs.readFileSync('server-cert.pem', 'utf8')
     }
-}).listen(9050);*/
+}).listen(9050);
